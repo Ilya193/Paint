@@ -47,4 +47,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     implementation 'com.github.novatien:SmartColorPicker:1.0.2'
+
+    implementation "androidx.fragment:fragment-ktx:1.4.1"
 }

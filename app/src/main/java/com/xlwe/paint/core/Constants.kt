@@ -1,4 +1,4 @@
-package com.xlwe.paint
+package com.xlwe.paint.core
 
 class Constants {
     companion object {

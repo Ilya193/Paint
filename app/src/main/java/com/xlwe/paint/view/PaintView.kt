@@ -1,4 +1,4 @@
-package com.xlwe.paint
+package com.xlwe.paint.view
 
 import android.content.Context
 import android.graphics.Canvas
@@ -8,6 +8,7 @@ import android.graphics.Path
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
+import com.xlwe.paint.core.Constants
 
 class PaintView @JvmOverloads constructor(
     context: Context,
