@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import com.xlwe.paint.core.BaseFragment
 import com.xlwe.paint.core.OpeningAppSettings
 import com.xlwe.paint.core.PermissionRequest
 import com.xlwe.paint.databinding.FragmentPermissionsBinding

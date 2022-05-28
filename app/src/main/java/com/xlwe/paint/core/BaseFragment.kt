@@ -1,4 +1,4 @@
-package com.xlwe.paint.screens
+package com.xlwe.paint.core
 
 import androidx.fragment.app.Fragment
 

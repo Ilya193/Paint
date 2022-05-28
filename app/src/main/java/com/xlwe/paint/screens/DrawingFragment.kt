@@ -12,10 +12,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.SeekBar
 import com.nvt.color.ColorPickerDialog
-import com.xlwe.paint.core.Constants
-import com.xlwe.paint.core.OnColorPickerListener
-import com.xlwe.paint.core.OnSeekBarChangeListener
-import com.xlwe.paint.core.SaveFile
+import com.xlwe.paint.core.*
 import com.xlwe.paint.databinding.FragmentDrawingBinding
 import java.io.File
 

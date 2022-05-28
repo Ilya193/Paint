@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.xlwe.paint.R
+import com.xlwe.paint.core.BaseFragment
 import com.xlwe.paint.core.OnClickListener
 import com.xlwe.paint.core.OnLongClickListener
 import com.xlwe.paint.core.ReadFile
