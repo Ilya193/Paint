@@ -24,6 +24,7 @@ import com.xlwe.paint.viewmodels.MainViewModel
 
 class MainActivity : AppCompatActivity(), PermissionRequest, ReadFile, SaveFile,
     OpeningAppSettings {
+
     private val binding: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }

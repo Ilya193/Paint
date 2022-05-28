@@ -13,6 +13,8 @@ import android.widget.EditText
 import android.widget.SeekBar
 import com.nvt.color.ColorPickerDialog
 import com.xlwe.paint.core.Constants
+import com.xlwe.paint.core.OnColorPickerListener
+import com.xlwe.paint.core.OnSeekBarChangeListener
 import com.xlwe.paint.core.SaveFile
 import com.xlwe.paint.databinding.FragmentDrawingBinding
 import java.io.File
@@ -66,38 +68,22 @@ class DrawingFragment : BaseFragment() {
             val canvas = Canvas(bitmap)
             binding.paint.draw(canvas)
 
-            //val bitmap = binding.paint.drawToBitmap()
+            //or val bitmap = binding.paint.drawToBitmap()
 
-            if (screenSettings == SETTINGS_EDIT) {
+            if (isSettingsScreen(SETTINGS_EDIT)) {
                 saveFile.save(bitmap, namePicture.replace(".png", ""))
                 parentFragmentManager.popBackStack()
             } else {
-                val dialog = AlertDialog.Builder(context)
-                val name = EditText(context)
-                dialog.setTitle("Введите имя")
-                dialog.setView(name)
-
-                dialog.setPositiveButton("Сохранить") { _, _ ->
-                    saveFile.save(bitmap, name.text.toString())
-                    parentFragmentManager.popBackStack()
-                }
-
-                dialog.setNegativeButton("Отмена") { _, _ -> }
-
-                dialog.create()
-                dialog.show()
+                launchDialog(bitmap)
             }
         }
-
 
         binding.color.setOnClickListener {
             ColorPickerDialog(
                 context,
                 binding.paint.color,
                 true,
-                object : ColorPickerDialog.OnColorPickerListener {
-                    override fun onCancel(dialog: ColorPickerDialog?) {}
-
+                object : OnColorPickerListener() {
                     override fun onOk(dialog: ColorPickerDialog?, color: Int) {
                         binding.paint.color = color
                     }
@@ -108,13 +94,11 @@ class DrawingFragment : BaseFragment() {
         binding.seekbar.progress = Constants.PROGRESS
         binding.tvWidth.text = Constants.PROGRESS.toString()
 
-        binding.seekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+        binding.seekbar.setOnSeekBarChangeListener(object : OnSeekBarChangeListener() {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 if (progress == 0) binding.tvWidth.text = Constants.MIN
                 else binding.tvWidth.text = progress.toString()
             }
-
-            override fun onStartTrackingTouch(seekBar: SeekBar?) {}
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
                 if (seekBar!!.progress == 0) binding.paint.setStrokeWidth(1)
@@ -123,8 +107,24 @@ class DrawingFragment : BaseFragment() {
         })
     }
 
+    private fun launchDialog(bitmap: Bitmap) {
+        val name = EditText(context)
+        AlertDialog.Builder(context)
+            .setTitle("Введите имя")
+            .setView(name)
+            .setPositiveButton("Сохранить") { _, _ ->
+                saveFile.save(bitmap, name.text.toString())
+                parentFragmentManager.popBackStack()
+            }
+            .setNegativeButton("Отмена") { _, _ -> }
+            .create()
+            .show()
+    }
+
+    override fun isSettingsScreen(screen: String) = screenSettings == screen
+
     private fun startSettingsScreen() {
-        if (screenSettings == SETTINGS_ADD) startScreenAdd()
+        if (isSettingsScreen(SETTINGS_ADD)) startScreenAdd()
         else startScreenEdit()
     }
 
@@ -142,7 +142,7 @@ class DrawingFragment : BaseFragment() {
         val args = requireArguments()
         screenSettings = args.getString(SCREEN_SETTINGS) ?: ""
 
-        if (screenSettings == SETTINGS_EDIT) {
+        if (isSettingsScreen(SETTINGS_EDIT)) {
             absolutePath = args.getString(ABSOLUTE_PATH, "")
             namePicture = args.getString(NAME_PICTURE, "")
         }

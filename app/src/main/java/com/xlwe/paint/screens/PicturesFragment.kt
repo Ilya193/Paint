@@ -92,21 +92,19 @@ class PicturesFragment : BaseFragment(), OnClickListener, OnLongClickListener {
     }
 
     override fun onLongClick(absolutePath: String) {
-        val dialog = AlertDialog.Builder(context)
-        dialog.setTitle("Удаление файла")
-        dialog.setMessage("Вы действительно хотите удалить файл?")
+        AlertDialog.Builder(context)
+            .setTitle("Удаление файла")
+            .setMessage("Вы действительно хотите удалить файл?")
+            .setPositiveButton("Да") { _, _ ->
+                val file = File(absolutePath)
+                val isDelete = file.delete()
 
-        dialog.setPositiveButton("Да") { _, _ ->
-            val file = File(absolutePath)
-            val isDelete = file.delete()
-
-            if (isDelete)
-                readFile.read()
-        }
-
-        dialog.setNegativeButton("Нет") { _, _ -> }
-        dialog.create()
-        dialog.show()
+                if (isDelete)
+                    readFile.read()
+            }
+            .setNegativeButton("Нет") { _, _ -> }
+            .create()
+            .show()
     }
 
     override fun onDestroyView() {

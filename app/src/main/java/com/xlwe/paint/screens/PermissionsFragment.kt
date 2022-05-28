@@ -10,7 +10,7 @@ import com.xlwe.paint.core.OpeningAppSettings
 import com.xlwe.paint.core.PermissionRequest
 import com.xlwe.paint.databinding.FragmentPermissionsBinding
 
-class PermissionsFragment : Fragment() {
+class PermissionsFragment : BaseFragment() {
     private var _binding: FragmentPermissionsBinding? = null
     private val binding: FragmentPermissionsBinding
         get() = _binding!!
@@ -41,7 +41,7 @@ class PermissionsFragment : Fragment() {
         val args = requireArguments()
         screenSettings = args.getString(SCREEN_SETTINGS) ?: ""
 
-        if (screenSettings == SETTINGS_CANCEL_START) {
+        if (isSettingsScreen(SETTINGS_CANCEL_START)) {
             binding.text.visibility = View.VISIBLE
             binding.btnPermission.visibility = View.VISIBLE
 
@@ -50,7 +50,7 @@ class PermissionsFragment : Fragment() {
             }
         }
 
-        if (screenSettings == SETTINGS_FULL_CANCEL_START) {
+        if (isSettingsScreen(SETTINGS_FULL_CANCEL_START)) {
             binding.text.visibility = View.VISIBLE
             binding.btnPermission.visibility = View.VISIBLE
 
@@ -61,6 +61,8 @@ class PermissionsFragment : Fragment() {
             }
         }
     }
+
+    override fun isSettingsScreen(screen: String) = screenSettings == screen
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

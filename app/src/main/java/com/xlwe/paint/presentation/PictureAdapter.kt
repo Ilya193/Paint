@@ -16,8 +16,9 @@ class PictureAdapter(
     private val onLongClickListener: OnLongClickListener
 ) : ListAdapter<Picture, PictureAdapter.PictureViewHolder>(DiffUtilCallback()) {
 
-    inner class PictureViewHolder(private val binding: PictureItemBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    inner class PictureViewHolder(
+        private val binding: PictureItemBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(absolutePath: String, name: String) {
             binding.picture.setImageBitmap(BitmapFactory.decodeFile(absolutePath))
