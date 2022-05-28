@@ -1,4 +1,4 @@
-package com.xlwe.paint.screens
+package com.xlwe.paint.presentation
 
 import android.content.Context
 import android.os.Bundle
@@ -54,17 +54,13 @@ class PermissionsFragment : BaseFragment() {
     }
 
     private fun startSettingsCancelScreen() {
-        binding.btnPermission.setOnClickListener {
-            permissionRequest.request()
-        }
+        binding.btnPermission.setOnClickListener { permissionRequest.request() }
     }
 
     private fun startSettingsFullCancelScreen() {
         binding.text.text = "Вы навсегда отклонили разрешения, без которых я не могу работать"
         binding.btnPermission.text = "Открыть настройки"
-        binding.btnPermission.setOnClickListener {
-            openingAppSettings.openSettings()
-        }
+        binding.btnPermission.setOnClickListener { openingAppSettings.openSettings() }
     }
 
     override fun isSettingsScreen(screen: String) = screenSettings == screen

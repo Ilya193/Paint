@@ -1,4 +1,4 @@
-package com.xlwe.paint.screens
+package com.xlwe.paint.presentation
 
 import android.Manifest
 import android.content.Intent
@@ -20,7 +20,6 @@ import com.xlwe.paint.core.PermissionRequest
 import com.xlwe.paint.core.ReadFile
 import com.xlwe.paint.core.SaveFile
 import com.xlwe.paint.databinding.ActivityMainBinding
-import com.xlwe.paint.viewmodels.MainViewModel
 
 class MainActivity : AppCompatActivity(), PermissionRequest, ReadFile, SaveFile,
     OpeningAppSettings {

@@ -1,4 +1,4 @@
-package com.xlwe.paint.screens
+package com.xlwe.paint.presentation
 
 import android.app.AlertDialog
 import android.content.Context
@@ -33,11 +33,6 @@ class DrawingFragment : BaseFragment() {
             saveFile = context
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        parseParams()
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,6 +43,7 @@ class DrawingFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        parseParams()
         startSettingsScreen()
     }
 
@@ -76,15 +72,11 @@ class DrawingFragment : BaseFragment() {
         }
 
         binding.color.setOnClickListener {
-            ColorPickerDialog(
-                context,
-                binding.paint.color,
-                true,
-                object : OnColorPickerListener() {
-                    override fun onOk(dialog: ColorPickerDialog?, color: Int) {
-                        binding.paint.color = color
-                    }
-                }).show()
+            ColorPickerDialog(context, binding.paint.color, true, object : OnColorPickerListener() {
+                override fun onOk(dialog: ColorPickerDialog?, color: Int) {
+                    binding.paint.color = color
+                }
+            }).show()
         }
 
         binding.seekbar.max = Constants.MAX

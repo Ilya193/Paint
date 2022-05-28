@@ -1,4 +1,4 @@
-package com.xlwe.paint.viewmodels
+package com.xlwe.paint.presentation
 
 import android.graphics.Bitmap
 import androidx.lifecycle.LiveData

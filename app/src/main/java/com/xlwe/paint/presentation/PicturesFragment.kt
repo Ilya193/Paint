@@ -1,4 +1,4 @@
-package com.xlwe.paint.screens
+package com.xlwe.paint.presentation
 
 import android.app.AlertDialog
 import android.content.Context
@@ -14,8 +14,6 @@ import com.xlwe.paint.core.OnClickListener
 import com.xlwe.paint.core.OnLongClickListener
 import com.xlwe.paint.core.ReadFile
 import com.xlwe.paint.databinding.FragmentPicturesBinding
-import com.xlwe.paint.presentation.PictureAdapter
-import com.xlwe.paint.viewmodels.MainViewModel
 import java.io.File
 
 class PicturesFragment : BaseFragment(), OnClickListener, OnLongClickListener {

@@ -1,4 +1,4 @@
-package com.xlwe.paint.view
+package com.xlwe.paint.presentation
 
 import android.content.Context
 import android.graphics.Canvas
