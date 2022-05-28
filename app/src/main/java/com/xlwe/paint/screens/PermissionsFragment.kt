@@ -49,18 +49,21 @@ class PermissionsFragment : BaseFragment() {
     }
 
     override fun startSettingsScreen() {
-        if (isSettingsScreen(SETTINGS_CANCEL_START)) {
-            binding.btnPermission.setOnClickListener {
-                permissionRequest.request()
-            }
-        }
+        if (isSettingsScreen(SETTINGS_CANCEL_START)) startSettingsCancelScreen()
+        if (isSettingsScreen(SETTINGS_FULL_CANCEL_START)) startSettingsFullCancelScreen()
+    }
 
-        if (isSettingsScreen(SETTINGS_FULL_CANCEL_START)) {
-            binding.text.text = "Вы навсегда отклонили разрешения, без которых я не могу работать"
-            binding.btnPermission.text = "Открыть настройки"
-            binding.btnPermission.setOnClickListener {
-                openingAppSettings.openSettings()
-            }
+    private fun startSettingsCancelScreen() {
+        binding.btnPermission.setOnClickListener {
+            permissionRequest.request()
+        }
+    }
+
+    private fun startSettingsFullCancelScreen() {
+        binding.text.text = "Вы навсегда отклонили разрешения, без которых я не могу работать"
+        binding.btnPermission.text = "Открыть настройки"
+        binding.btnPermission.setOnClickListener {
+            openingAppSettings.openSettings()
         }
     }
 
