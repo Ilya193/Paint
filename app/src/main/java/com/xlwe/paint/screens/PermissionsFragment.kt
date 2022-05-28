@@ -37,10 +37,18 @@ class PermissionsFragment : BaseFragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        parseParams()
+        startSettingsScreen()
+    }
+
     override fun parseParams() {
         val args = requireArguments()
         screenSettings = args.getString(SCREEN_SETTINGS) ?: ""
+    }
 
+    override fun startSettingsScreen() {
         if (isSettingsScreen(SETTINGS_CANCEL_START)) {
             binding.btnPermission.setOnClickListener {
                 permissionRequest.request()
@@ -57,11 +65,6 @@ class PermissionsFragment : BaseFragment() {
     }
 
     override fun isSettingsScreen(screen: String) = screenSettings == screen
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        parseParams()
-    }
 
     override fun onDestroyView() {
         _binding = null

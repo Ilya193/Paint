@@ -6,4 +6,5 @@ abstract class BaseFragment : Fragment() {
     protected open fun setListeners() = Unit
     protected open fun isSettingsScreen(screen: String) = false
     protected open fun parseParams() = Unit
+    protected open fun startSettingsScreen() = Unit
 }

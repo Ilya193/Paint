@@ -123,7 +123,7 @@ class DrawingFragment : BaseFragment() {
 
     override fun isSettingsScreen(screen: String) = screenSettings == screen
 
-    private fun startSettingsScreen() {
+    override fun startSettingsScreen() {
         if (isSettingsScreen(SETTINGS_ADD)) startScreenAdd()
         else startScreenEdit()
     }
