@@ -21,7 +21,6 @@
         android:textStyle="bold"
         android:textColor="@color/black"
         android:gravity="center"
-        android:visibility="gone"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"/>
 
@@ -30,7 +29,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/allow"
-        android:visibility="gone"
         android:layout_marginTop="16dp"/>
 
 </LinearLayout>

@@ -37,23 +37,17 @@ class PermissionsFragment : BaseFragment() {
         return binding.root
     }
 
-    private fun parseParams() {
+    override fun parseParams() {
         val args = requireArguments()
         screenSettings = args.getString(SCREEN_SETTINGS) ?: ""
 
         if (isSettingsScreen(SETTINGS_CANCEL_START)) {
-            binding.text.visibility = View.VISIBLE
-            binding.btnPermission.visibility = View.VISIBLE
-
             binding.btnPermission.setOnClickListener {
                 permissionRequest.request()
             }
         }
 
         if (isSettingsScreen(SETTINGS_FULL_CANCEL_START)) {
-            binding.text.visibility = View.VISIBLE
-            binding.btnPermission.visibility = View.VISIBLE
-
             binding.text.text = "Вы навсегда отклонили разрешения, без которых я не могу работать"
             binding.btnPermission.text = "Открыть настройки"
             binding.btnPermission.setOnClickListener {

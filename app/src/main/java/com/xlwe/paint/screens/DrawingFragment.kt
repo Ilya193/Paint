@@ -138,7 +138,7 @@ class DrawingFragment : BaseFragment() {
         setListeners()
     }
 
-    private fun parseParams() {
+    override fun parseParams() {
         val args = requireArguments()
         screenSettings = args.getString(SCREEN_SETTINGS) ?: ""
 
