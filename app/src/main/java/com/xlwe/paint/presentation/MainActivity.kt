@@ -70,21 +70,7 @@ class MainActivity : AppCompatActivity(), PermissionRequest, ReadFile, SaveFile,
     }
 
     override fun save(bitmap: Bitmap, name: String) {
-        //mainViewModel.save(bitmap, name, filesDir)
-
-        Thread {
-            val filename = "$name.png"
-            val file = File(filesDir, filename)
-
-            try {
-                val out = FileOutputStream(file)
-                bitmap.compress(Bitmap.CompressFormat.PNG, 90, out)
-                out.flush()
-                out.close()
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }.run()
+        mainViewModel.save(bitmap, name, filesDir)
     }
 
     private fun launchFragment(fragment: Fragment) {

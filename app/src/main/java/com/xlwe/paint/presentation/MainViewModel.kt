@@ -19,7 +19,7 @@ class MainViewModel : ViewModel() {
         _listPicture.postValue(files)
     }
 
-    fun read(filesDir: File) = viewModelScope.launch(Dispatchers.IO) {
+    fun read(filesDir: File) {
         val files = filesDir.listFiles()
 
         if (files != null) {
@@ -31,7 +31,7 @@ class MainViewModel : ViewModel() {
             changeListPicture(listOf())
     }
 
-    fun save(bitmap: Bitmap, name: String, filesDir: File) = viewModelScope.launch(Dispatchers.IO) {
+    fun save(bitmap: Bitmap, name: String, filesDir: File) = Thread {
         val filename = "$name.png"
         val file = File(filesDir, filename)
 
@@ -43,5 +43,5 @@ class MainViewModel : ViewModel() {
         } catch (e: Exception) {
             e.printStackTrace()
         }
-    }
+    }.run()
 }
