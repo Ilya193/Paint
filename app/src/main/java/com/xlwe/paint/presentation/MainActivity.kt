@@ -20,6 +20,8 @@ import com.xlwe.paint.core.PermissionRequest
 import com.xlwe.paint.core.ReadFile
 import com.xlwe.paint.core.SaveFile
 import com.xlwe.paint.databinding.ActivityMainBinding
+import java.io.File
+import java.io.FileOutputStream
 
 class MainActivity : AppCompatActivity(), PermissionRequest, ReadFile, SaveFile,
     OpeningAppSettings {
@@ -68,7 +70,21 @@ class MainActivity : AppCompatActivity(), PermissionRequest, ReadFile, SaveFile,
     }
 
     override fun save(bitmap: Bitmap, name: String) {
-        mainViewModel.save(bitmap, name, filesDir)
+        //mainViewModel.save(bitmap, name, filesDir)
+
+        Thread {
+            val filename = "$name.png"
+            val file = File(filesDir, filename)
+
+            try {
+                val out = FileOutputStream(file)
+                bitmap.compress(Bitmap.CompressFormat.PNG, 90, out)
+                out.flush()
+                out.close()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }.run()
     }
 
     private fun launchFragment(fragment: Fragment) {

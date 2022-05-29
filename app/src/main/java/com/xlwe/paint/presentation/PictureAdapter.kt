@@ -22,7 +22,7 @@ class PictureAdapter(
 
         fun bind(absolutePath: String, name: String) {
             binding.picture.setImageBitmap(BitmapFactory.decodeFile(absolutePath))
-            binding.name.text = name
+            binding.name.text = name.replace(".png", "")
 
             binding.root.setOnLongClickListener {
                 onLongClickListener.onLongClick(absolutePath)
