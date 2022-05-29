@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity(), PermissionRequest, ReadFile, SaveFile,
         ).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 
         if (packageManager.resolveActivity(appSettingsIntent, PackageManager.MATCH_DEFAULT_ONLY) == null) {
-            Snackbar.make(binding.root, "Разрешения навсегда запрещены", Snackbar.LENGTH_SHORT)
+            Snackbar.make(binding.root, getString(R.string.no_app_open_settings), Snackbar.LENGTH_SHORT)
                 .show()
         } else {
             startActivity(appSettingsIntent)

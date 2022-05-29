@@ -12,4 +12,12 @@
     <string name="cancel">Отмена</string>
     <string name="explanation">Мне нужно разрешение на чтение и запись файлов, чтобы вы могли пользоваться приложением</string>
     <string name="allow">Разрешить</string>
+    <string name="open_settings">Открыть настройки</string>
+    <string name="permanently_denied">Вы навсегда отклонили разрешения, без которых я не могу работать</string>
+    <string name="no_app_open_settings">Разрешения навсегда запрещены</string>
+    <string name="deleting_file">Удаление файла</string>
+    <string name="really_deleting_file">Вы действительно хотите удалить файл?</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="enter_your_name">Введите имя</string>
 </resources>

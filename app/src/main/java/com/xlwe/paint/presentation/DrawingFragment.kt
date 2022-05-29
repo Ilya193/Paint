@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.SeekBar
 import com.nvt.color.ColorPickerDialog
+import com.xlwe.paint.R
 import com.xlwe.paint.core.*
 import com.xlwe.paint.databinding.FragmentDrawingBinding
 import java.io.File
@@ -99,13 +100,13 @@ class DrawingFragment : BaseFragment() {
     private fun launchDialog(bitmap: Bitmap) {
         val name = EditText(context)
         AlertDialog.Builder(context)
-            .setTitle("Введите имя")
+            .setTitle(getString(R.string.enter_your_name))
             .setView(name)
-            .setPositiveButton("Сохранить") { _, _ ->
+            .setPositiveButton(getString(R.string.save)) { _, _ ->
                 saveFile.save(bitmap, name.text.toString())
                 parentFragmentManager.popBackStack()
             }
-            .setNegativeButton("Отмена") { _, _ -> }
+            .setNegativeButton(getString(R.string.cancel)) { _, _ -> }
             .create()
             .show()
     }

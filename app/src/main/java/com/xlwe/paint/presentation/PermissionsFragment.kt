@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.xlwe.paint.R
 import com.xlwe.paint.core.BaseFragment
 import com.xlwe.paint.core.OpeningAppSettings
 import com.xlwe.paint.core.PermissionRequest
@@ -58,8 +59,8 @@ class PermissionsFragment : BaseFragment() {
     }
 
     private fun startSettingsFullCancelScreen() {
-        binding.text.text = "Вы навсегда отклонили разрешения, без которых я не могу работать"
-        binding.btnPermission.text = "Открыть настройки"
+        binding.text.text = getString(R.string.permanently_denied)
+        binding.btnPermission.text = getString(R.string.open_settings)
         binding.btnPermission.setOnClickListener { openingAppSettings.openSettings() }
     }
 
